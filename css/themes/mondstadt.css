@@ -1,16 +1,251 @@
-/* Mondstadt — windswept blues on warm apricot */
+/* Mondstadt — windswept blues on warm apricot
+   File: css/themes/mondstadt.css  (uses css/styles.css tokens: --nav-h and the responsive html font-size)
+   All page rules are scoped under body.stops.mondstadt so they beat nation-stops.css / extras.css
+   without !important and never touch other nations. */
+
 body.stops{
   --st-page:#f0c08e;--st-display:'DM Serif Display',Georgia,serif;--st-body:'Alegreya',Georgia,serif;
   --st-hero-overlay:linear-gradient(rgba(38,70,138,.58),rgba(38,70,138,.5));
   --st-eyebrow-hero:#f0c08e;--st-h1:#fbeedb;--st-btn-bg:#b04a3f;--st-btn-fg:#fff;
-  --st-stats-bg:#2e4e84;--st-stats-fg:#e9eef8;--st-stats-edge:#d9a94a;
-  --st-intro-bg:#ece4d6;--st-intro-eyebrow:#b04a48;--st-intro-h2:#2e4e84;--st-intro-p:#4f6499;
-  --st-stops-bg:#f0c08e;--st-frame:#d24b3a;--st-stop-overlay:linear-gradient(rgba(38,72,140,.5),rgba(38,72,140,.5));
+  --st-stats-bg:#456da8;--st-stats-fg:#e9eef8;--st-stats-edge:#d9a94a;
+  --st-intro-bg:#f7ebd8;--st-intro-eyebrow:#b04a48;--st-intro-h2:#456da8;--st-intro-p:#4f6499;
+  --st-stops-bg:#f0c08e;--st-frame:#c95746;--st-stop-overlay:linear-gradient(rgba(38,72,140,.5),rgba(38,72,140,.5));
   --st-num:#f0c08e;--st-link:#f0c08e;--st-h3-weight:400;--st-eyebrow-font:'DM Serif Display',serif;
+  /* page helpers — same palette */
+  --m-blue:#456da8;--m-blue-deep:#3a5f9a;--m-sky:#b9d2ea;--m-cream:#f7ebd8;--m-paper:#f7ebd8;--m-apricot:#f0c08e;
+  --m-navy:#1d315c;--m-navy-deep:#162748;--m-stat:#1d315c;
+  --m-gold:#d9a94a;--m-coral:#c95746;--m-red:#b04a48;
+  --m-wrap:72rem;--m-gutter:clamp(1.25rem,4.5vw,4rem);
+  --m-wide:96rem;--m-wide-gutter:clamp(1rem,2.5vw,2.5rem);
+  /* Anemo gust: two curling wind lines, in gold and in cream */
+  --gust-gold:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' fill='none' stroke='%23d9a94a' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M4 22h62c16 0 22-16 10-20-10-3-16 8-8 12'/%3E%3Cpath d='M16 36h74c14 0 20 12 10 17-9 4-15-6-8-10'/%3E%3Cpath d='M4 48h30'/%3E%3C/svg%3E");
+  --gust-cream:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' fill='none' stroke='%23fbeedb' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M4 22h62c16 0 22-16 10-20-10-3-16 8-8 12'/%3E%3Cpath d='M16 36h74c14 0 20 12 10 17-9 4-15-6-8-10'/%3E%3Cpath d='M4 48h30'/%3E%3C/svg%3E");
+  /* Anemo glyph (wind spiral), feather, and a pointed-arch arcade strip */
+  --anemo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%23d9a94a' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M16 16c0-2.5 3.5-2.5 3.5 0s-3.5 5-7 3.5S8 11.5 13 8s11.5-1 13 5'/%3E%3Cpath d='M6 24c4 3 10 4 15 1'/%3E%3C/svg%3E");
+  --feather:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%232e4e84' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 28C6 14 16 6 28 4 26 16 18 26 4 28Z'/%3E%3Cpath d='M4 28 22 10M12 20l-1-5M16 16l-1-5M19 13l-1-4'/%3E%3C/svg%3E");
+  --arcade:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20' fill='none' stroke='%23d9a94a' stroke-width='1.2'%3E%3Cpath d='M2 20V11C2 5 12 3 20 0c8 3 18 5 18 11v9'/%3E%3C/svg%3E");
+  /* dandelion seed (blue for light grounds, cream for dark), large Anemo symbol, blue and mirrored gust */
+  --seed-b:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23456da8' stroke-opacity='.55' stroke-width='1' stroke-linecap='round'%3E%3Cpath d='M12 23V12M12 12 4 5M12 12 7 3M12 12 2 11M12 12 20 5M12 12 17 3M12 12 22 11M12 12 12 2'/%3E%3Ccircle cx='12' cy='12' r='1.3'/%3E%3C/svg%3E");
+  --seed-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f7ebd8' stroke-opacity='.6' stroke-width='1' stroke-linecap='round'%3E%3Cpath d='M12 23V12M12 12 4 5M12 12 7 3M12 12 2 11M12 12 20 5M12 12 17 3M12 12 22 11M12 12 12 2'/%3E%3Ccircle cx='12' cy='12' r='1.3'/%3E%3C/svg%3E");
+  --anemo-lg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%23d9a94a' stroke-opacity='.6' stroke-linecap='round'%3E%3Ccircle cx='32' cy='32' r='29' stroke-width='.6'/%3E%3Ccircle cx='32' cy='32' r='25' stroke-width='.4'/%3E%3Cg transform='scale(2)' stroke-width='.7'%3E%3Cpath d='M16 16c0-2.5 3.5-2.5 3.5 0s-3.5 5-7 3.5S8 11.5 13 8s11.5-1 13 5'/%3E%3Cpath d='M6 24c4 3 10 4 15 1'/%3E%3C/g%3E%3C/svg%3E");
+  --gust-gold-r:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' fill='none' stroke='%23d9a94a' stroke-width='2.5' stroke-linecap='round'%3E%3Cg transform='matrix(-1 0 0 1 120 0)'%3E%3Cpath d='M4 22h62c16 0 22-16 10-20-10-3-16 8-8 12'/%3E%3Cpath d='M16 36h74c14 0 20 12 10 17-9 4-15-6-8-10'/%3E%3Cpath d='M4 48h30'/%3E%3C/g%3E%3C/svg%3E");
+  --gust-blue:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' fill='none' stroke='%23456da8' stroke-opacity='.3' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4 22h62c16 0 22-16 10-20-10-3-16 8-8 12'/%3E%3Cpath d='M16 36h74c14 0 20 12 10 17-9 4-15-6-8-10'/%3E%3C/svg%3E");
+  /* Mondstadt lattice (stained-glass diamonds), light-on-dark and dark-on-light */
+  --lat-light:repeating-linear-gradient(45deg,rgba(255,255,255,.06) 0 1px,transparent 1px 24px),repeating-linear-gradient(-45deg,rgba(255,255,255,.06) 0 1px,transparent 1px 24px);
+  --lat-dark:repeating-linear-gradient(45deg,rgba(46,78,132,.05) 0 1px,transparent 1px 24px),repeating-linear-gradient(-45deg,rgba(46,78,132,.05) 0 1px,transparent 1px 24px);
+  /* Mondstadt pennant bunting edge */
+  --bunting:radial-gradient(circle at 50% 0,var(--m-stat) 0 .8rem,transparent calc(.8rem + 1px)) 0 0/1.8rem 1rem repeat-x;
 }
-.st-hero{background-position:center 40%}
-.st-eyebrow{font-size:1.5rem;margin-bottom:.2rem}
-.st-hero h1{font-size:6.2rem;letter-spacing:.04em}
-.st-intro .eyebrow{font-size:1.1rem}
 
-.st-hero{background:var(--st-hero-overlay),url(../../assets/img/nations/mondstadt-hero.jpg) center/cover no-repeat}
+/* ---------- ornament: wind line · diamond · wind line ---------- */
+.mondstadt .st-orn{display:flex;align-items:center;justify-content:center;gap:.9rem;width:min(18rem,70%);margin:0 auto;color:var(--m-gold)}
+.mondstadt .st-orn::before,.mondstadt .st-orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,currentColor)}
+.mondstadt .st-orn::after{background:linear-gradient(270deg,transparent,currentColor)}
+.mondstadt .st-orn i{flex:none;width:1.7rem;height:1.7rem;background:var(--anemo) center/contain no-repeat}
+
+/* ---------- header (markup from styles.css, recoloured for this page only) ---------- */
+body.stops.mondstadt .site-header{background:linear-gradient(90deg,var(--m-navy),#456da8);border-top-color:rgba(251,238,219,.35);border-bottom:2px solid var(--m-gold)}
+body.stops.mondstadt .nav .menu{background:linear-gradient(#1d315c,#456da8);border-color:rgba(217,169,74,.6)}
+body.stops.mondstadt .nav>a:hover,body.stops.mondstadt .nav .has-menu>a:hover{color:var(--m-apricot)}
+
+/* ---------- extra icons / edges used below ---------- */
+body.stops.mondstadt{
+  --ic-cal:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d9a94a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
+  --ic-star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z' fill='%23d9a94a'/%3E%3C/svg%3E");
+  --ic-feather:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%23d9a94a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 28C6 14 16 6 28 4 26 16 18 26 4 28Z'/%3E%3Cpath d='M4 28 22 10'/%3E%3C/svg%3E");
+  --sparkle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z' fill='%23f7ebd8' stroke='%23d9a94a' stroke-width='.8'/%3E%3C/svg%3E");
+  --wave-hero:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V24C160 6 320 36 520 22S900 2 1200 20V40Z' fill='%23f7ebd8'/%3E%3C/svg%3E");
+  --wave-top:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1200V20C1040 38 880 2 700 20S340 38 180 20 60 8 0 20Z' fill='%23f7ebd8'/%3E%3C/svg%3E");
+  --banner:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 60' fill='%23f7ebd8' fill-opacity='.22' stroke='%23f7ebd8' stroke-opacity='.22' stroke-linecap='round'%3E%3Cpath stroke='none' d='M243 60 246 28H254L257 60ZM242 30 250 18 258 30ZM150 60V34H158V20L162 8 166 20V34H174V14L178 0 182 14V34H190V60ZM60 60V46L72 38 84 46V60ZM88 60V42L102 32 116 42V60Z'/%3E%3Cpath fill='none' stroke-width='3' d='M250 26 228 4M250 26 272 48M250 26 228 48M250 26 272 4'/%3E%3C/svg%3E");
+}
+
+/* ---------- hero ---------- */
+body.stops.mondstadt .st-hero{
+  position:relative;display:flex;align-items:center;overflow:hidden;
+  min-height:clamp(33rem,46vh,43rem);padding:clamp(2rem,4.5vh,3rem) var(--m-wide-gutter) clamp(4rem,7vh,5rem);
+  background:linear-gradient(90deg,rgba(29,49,92,.74) 0%,rgba(29,49,92,.42) 48%,rgba(29,49,92,.1) 80%),
+    radial-gradient(ellipse at 88% 8%,rgba(240,192,142,.4),transparent 52%),
+    url(../../assets/img/nations/mondstadt-hero.jpg) center 35%/cover no-repeat}
+body.stops.mondstadt .st-hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:var(--wave-hero) 0 100%/100% clamp(2rem,4.5vw,3.4rem) no-repeat,
+    radial-gradient(circle at 12% 30%,rgba(251,238,219,.85) 0 2px,transparent 3px),radial-gradient(circle at 46% 18%,rgba(251,238,219,.7) 0 1.5px,transparent 2.5px),
+    radial-gradient(circle at 74% 56%,rgba(240,192,142,.9) 0 2px,transparent 3px),radial-gradient(circle at 92% 30%,rgba(251,238,219,.7) 0 1.5px,transparent 2.5px),var(--lat-light)}
+body.stops.mondstadt .st-hero .copy{position:relative;z-index:1;width:100%;max-width:var(--m-wide);margin:0 auto;text-align:left}
+body.stops.mondstadt .st-hero .copy>*{max-width:46rem}
+body.stops.mondstadt .st-hero .copy>h1{max-width:none}
+body.stops.mondstadt .st-eyebrow{display:flex;align-items:center;gap:.8rem;margin:0 0 .6rem;font:italic 400 clamp(1.1rem,1.8vw,1.4rem)/1.3 var(--st-body);letter-spacing:.02em;color:var(--st-eyebrow-hero)}
+body.stops.mondstadt .st-eyebrow::before{content:"";flex:none;width:2.5rem;height:1px;background:var(--m-gold)}
+body.stops.mondstadt .st-hero h1{margin:0 0 .6rem;font:400 clamp(2.8rem,6vw,4.4rem)/1 var(--st-display);letter-spacing:.03em;overflow-wrap:anywhere;color:var(--st-h1);text-shadow:0 2px 24px rgba(20,36,80,.5)}
+body.stops.mondstadt .st-hero h1::after{content:"";display:inline-block;width:.5em;height:.5em;margin-left:.35em;vertical-align:.3em;background:var(--sparkle) center/contain no-repeat}
+body.stops.mondstadt .st-tag{margin:0 0 .9rem;font:italic 500 clamp(1.25rem,2.2vw,1.6rem)/1.35 var(--st-body);color:var(--m-apricot)}
+body.stops.mondstadt .st-desc{margin:0 0 1.2rem;font:400 clamp(1.05rem,1.4vw,1.2rem)/1.65 var(--st-body);color:var(--m-paper)}
+body.stops.mondstadt .st-btn{display:inline-flex;align-items:center;max-width:100%;padding:.95rem 1.7rem;border:1px solid var(--m-gold);border-radius:3px;background:linear-gradient(180deg,#d4654f,#b04a3f);color:#fff;font:600 1.02rem/1.25 var(--st-body);letter-spacing:.04em;text-align:left;cursor:pointer;box-shadow:0 .7rem 1.5rem rgba(20,36,80,.35),inset 0 0 0 2px rgba(247,235,216,.18);transition:filter .2s,transform .2s}
+body.stops.mondstadt .st-btn::after{content:"→";margin-left:.75rem}
+body.stops.mondstadt .st-btn:hover{filter:brightness(1.1);transform:translateY(-2px)}
+
+/* ---------- one continuous atmosphere: cream → sky blue → cream, with clouds, seeds, feathers ---------- */
+body.stops.mondstadt .st-body{position:relative;overflow:hidden;
+  background:var(--feather) 2% 40%/2.4rem no-repeat,var(--feather) 98% 14%/2.4rem no-repeat,
+    var(--seed-b) 5% 18%/1.3rem no-repeat,var(--seed-b) 93% 40%/1.1rem no-repeat,var(--seed-b) 8% 58%/1rem no-repeat,var(--seed-b) 96% 72%/1.4rem no-repeat,var(--seed-b) 4% 88%/1.2rem no-repeat,
+    radial-gradient(circle at 20% 12%,rgba(217,169,74,.75) 0 1.5px,transparent 2.5px),radial-gradient(circle at 78% 30%,rgba(217,169,74,.7) 0 1.5px,transparent 2.5px),radial-gradient(circle at 36% 62%,rgba(217,169,74,.7) 0 1.5px,transparent 2.5px),
+    radial-gradient(ellipse 30% 5% at 16% 8%,rgba(255,255,255,.7),transparent),radial-gradient(ellipse 26% 4% at 84% 52%,rgba(255,255,255,.65),transparent),radial-gradient(ellipse 34% 5% at 40% 40%,rgba(255,255,255,.55),transparent),
+    radial-gradient(ellipse at 50% 0,rgba(240,192,142,.4),transparent 55%),var(--lat-dark),
+    linear-gradient(180deg,#f7ebd8 0%,#f6e3cb 16%,#d6e5f3 44%,#c3d9ee 54%,#e9e6dc 72%,#f7ebd8 100%)}
+body.stops.mondstadt .st-wind-break{grid-column:1/-1;position:static;height:2.6rem;overflow:visible;background:none;display:flex;justify-content:center;align-items:center}
+body.stops.mondstadt .st-wind-break::before{content:"";width:min(18rem,70%);height:1.7rem;position:static;transform:none;opacity:1;
+  background:var(--anemo) center/1.7rem no-repeat,linear-gradient(90deg,transparent,#d9a94a) left center/calc(50% - 1.5rem) 1px no-repeat,linear-gradient(270deg,transparent,#d9a94a) right center/calc(50% - 1.5rem) 1px no-repeat}
+body.stops.mondstadt .st-wind-break::after{display:none}
+
+/* ---------- package details: compact strip directly beneath the hero ---------- */
+body.stops.mondstadt .st-package{position:relative;max-width:var(--m-wide);margin:0 auto;padding:clamp(1.25rem,2.5vw,2rem) var(--m-wide-gutter) clamp(1rem,2vw,1.5rem)}
+body.stops.mondstadt .st-package>h2{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap} /* heading kept for screen readers */
+body.stops.mondstadt .st-pkg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.75rem,1.5vw,1.25rem);margin:0;padding:0;list-style:none}
+body.stops.mondstadt .st-pkg li{position:relative;display:grid;grid-template-columns:3rem minmax(0,1fr);column-gap:1rem;align-items:center;margin:0;padding:.85rem 1.3rem;text-align:left;
+  background:linear-gradient(135deg,#fffaf0,#f6e6cd 60%,#e4eef7);border:1px solid rgba(217,169,74,.85);border-radius:3px;box-shadow:0 .7rem 1.4rem rgba(46,78,132,.14),inset 0 0 0 .3rem rgba(255,255,255,.45)}
+body.stops.mondstadt .st-pkg li::before{content:"";position:absolute;inset:.4rem;pointer-events:none;--g:linear-gradient(rgba(217,169,74,.95),rgba(217,169,74,.95));
+  background:var(--g) 0 0/.9rem 1px no-repeat,var(--g) 0 0/1px .9rem no-repeat,var(--g) 100% 0/.9rem 1px no-repeat,var(--g) 100% 0/1px .9rem no-repeat,var(--g) 0 100%/.9rem 1px no-repeat,var(--g) 0 100%/1px .9rem no-repeat,var(--g) 100% 100%/.9rem 1px no-repeat,var(--g) 100% 100%/1px .9rem no-repeat}
+body.stops.mondstadt .st-pkg-ic{display:block;grid-row:1/3;width:3rem;height:3rem;margin:0;border:1px solid var(--m-gold);border-radius:50%;
+  background:var(--ic-cal) center/1.35rem no-repeat,linear-gradient(180deg,#2c4c88,#1d315c);box-shadow:0 .4rem .9rem rgba(29,49,92,.3),inset 0 0 0 2px rgba(247,235,216,.12)}
+body.stops.mondstadt .st-pkg li:nth-child(2) .st-pkg-ic{background-image:var(--ic-star),linear-gradient(180deg,#2c4c88,#1d315c)}
+body.stops.mondstadt .st-pkg li:nth-child(3) .st-pkg-ic{background-image:var(--ic-feather),linear-gradient(180deg,#2c4c88,#1d315c)}
+body.stops.mondstadt .st-pkg h3{margin:0 0 .1rem;font:italic 400 1.05rem/1.3 var(--st-body);letter-spacing:.03em;color:var(--m-coral)}
+body.stops.mondstadt .st-pkg p{margin:0;font:400 clamp(1.15rem,1.8vw,1.5rem)/1.25 var(--st-display);color:var(--m-navy)}
+body.stops.mondstadt .st-pkg [data-package-price]{color:var(--m-coral)}
+body.stops.mondstadt .st-pkg [data-package-focus]{text-transform:capitalize}
+
+/* ---------- introduction: its own centred chapter ---------- */
+body.stops.mondstadt .st-front{display:block;max-width:none;margin:0;padding:0}
+body.stops.mondstadt .st-intro{position:relative;display:block;overflow:visible;max-width:46rem;margin:0 auto;padding:clamp(2.5rem,5vw,4rem) var(--m-gutter) clamp(4rem,8vw,6.5rem);
+  background:radial-gradient(ellipse at 50% 45%,rgba(255,255,255,.6),transparent 65%);text-align:center}
+body.stops.mondstadt .st-intro::before,body.stops.mondstadt .st-intro::after{content:"";display:block;position:absolute;top:44%;width:7rem;height:3.5rem;opacity:.55;pointer-events:none;background:var(--gust-gold) center/contain no-repeat}
+body.stops.mondstadt .st-intro::before{left:-7.5rem}
+body.stops.mondstadt .st-intro::after{right:-7.5rem;background-image:var(--gust-gold-r)}
+body.stops.mondstadt .st-intro>*{position:relative;transform:none;float:none;width:auto;min-width:0;max-width:none;margin:0;padding:0;border:0}
+body.stops.mondstadt .st-intro>div{max-width:36rem;margin:0 auto 1.25rem}
+body.stops.mondstadt .st-intro .eyebrow{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:0 0 .8rem;font:italic 400 1.05rem/1.4 var(--st-eyebrow-font);letter-spacing:.03em;text-transform:none;color:var(--m-coral)}
+body.stops.mondstadt .st-intro .eyebrow::before{content:"";flex:none;width:.9rem;height:.9rem;background:var(--ic-star) center/contain no-repeat}
+body.stops.mondstadt .st-intro h2{margin:0;font:400 clamp(1.9rem,3.6vw,2.7rem)/1.2 var(--st-display);letter-spacing:.01em;overflow-wrap:break-word;color:var(--m-navy)}
+body.stops.mondstadt .st-intro>.st-orn{width:min(16rem,70%);margin:0 auto 1.5rem;justify-content:center}
+body.stops.mondstadt .st-intro>p{max-width:34rem;margin:0 auto;font:400 clamp(1.05rem,1.35vw,1.2rem)/1.8 var(--st-body);color:#2f4577}
+
+/* ---------- destinations: three chapters in one horizontal row, text beneath each image ---------- */
+body.stops.mondstadt .st-stops{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;column-gap:clamp(1.25rem,2.5vw,2.5rem);row-gap:.75rem;overflow:visible;max-width:var(--m-wide);margin:0 auto;padding:0 var(--m-wide-gutter) clamp(2rem,4vw,3rem);background:none}
+body.stops.mondstadt .st-stops::before{content:"";display:block;grid-column:1/-1;width:min(18rem,70%);height:1.7rem;margin:0 auto;
+  background:var(--anemo) center/1.7rem no-repeat,linear-gradient(90deg,transparent,#d9a94a) left center/calc(50% - 1.5rem) 1px no-repeat,linear-gradient(270deg,transparent,#d9a94a) right center/calc(50% - 1.5rem) 1px no-repeat}
+body.stops.mondstadt .st-stops::after{display:none}
+body.stops.mondstadt .st-stops>.stop,body.stops.mondstadt .st-stops>.stop.right{
+  position:relative;display:grid;grid-template-columns:minmax(0,1fr);align-content:start;align-items:start;gap:clamp(1.25rem,2vw,1.75rem);
+  max-width:none;min-width:0;min-height:0;height:auto;margin:0;padding:0;background:none;border:0;box-shadow:none;overflow:visible}
+body.stops.mondstadt .stop::before,body.stops.mondstadt .stop::after{display:none}
+body.stops.mondstadt .stop>.stop-frame{ /* the photograph: cream border, gold line, corner brackets, tilted like a pinned print */
+  position:relative;display:block;grid-column:1;grid-row:1;width:100%;margin:0;aspect-ratio:4/3;overflow:hidden;
+  background:linear-gradient(160deg,#b9d2ea,#f0c08e);border:.5rem solid var(--m-paper);border-radius:3px;
+  box-shadow:0 0 0 1px var(--m-gold),0 1.4rem 2.4rem rgba(29,49,92,.3)}
+body.stops.mondstadt .stop.right>.stop-frame{grid-column:1}
+body.stops.mondstadt .stop:nth-child(odd)>.stop-frame{transform:rotate(-1.4deg)}
+body.stops.mondstadt .stop:nth-child(even)>.stop-frame{transform:rotate(1.4deg)}
+body.stops.mondstadt .stop-frame>.stop-img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;margin:0;padding:0;border:0;object-fit:cover;object-position:center}
+body.stops.mondstadt .stop-frame::before{content:"";position:absolute;inset:.5rem;z-index:2;pointer-events:none;--g:linear-gradient(#d9a94a,#d9a94a);
+  background:var(--g) 0 0/1.4rem 2px no-repeat,var(--g) 0 0/2px 1.4rem no-repeat,var(--g) 100% 0/1.4rem 2px no-repeat,var(--g) 100% 0/2px 1.4rem no-repeat,
+    var(--g) 0 100%/1.4rem 2px no-repeat,var(--g) 0 100%/2px 1.4rem no-repeat,var(--g) 100% 100%/1.4rem 2px no-repeat,var(--g) 100% 100%/2px 1.4rem no-repeat}
+body.stops.mondstadt .stop-frame::after{content:"";position:absolute;inset:.8rem;border:1px solid rgba(217,169,74,.85);pointer-events:none;box-shadow:inset 0 -3rem 3rem -2.2rem rgba(20,36,77,.4)}
+body.stops.mondstadt .stop .copy{display:block;position:static;inset:auto;transform:none;grid-column:1;grid-row:2;justify-self:stretch;width:auto;min-width:0;max-width:none;padding:0;background:none;text-align:left;color:var(--m-navy)}
+body.stops.mondstadt .stop.right .copy{grid-column:1;justify-self:stretch}
+body.stops.mondstadt .stop .n{display:flex;align-items:center;gap:1rem;margin:0 0 .5rem;padding:0;background:none;border:0;border-radius:0;font:400 clamp(2.4rem,4vw,3.4rem)/1 var(--st-display);letter-spacing:.02em;color:var(--m-coral);-webkit-text-stroke:0}
+body.stops.mondstadt .stop .n::after{content:"";width:4.5rem;height:2.25rem;background:var(--gust-gold) center/contain no-repeat}
+body.stops.mondstadt .stop h3{display:block;margin:0 0 1rem;padding:0;background:none;border:0;font:var(--st-h3-weight) clamp(1.6rem,2.6vw,2.2rem)/1.12 var(--st-display);color:var(--m-navy)}
+body.stops.mondstadt .stop h3::after{content:"";display:block;width:4rem;height:2px;margin-top:.9rem;background:linear-gradient(90deg,var(--m-coral),var(--m-gold))}
+body.stops.mondstadt .stop .copy p{margin:0 0 1.5rem;font:400 clamp(1.05rem,1.3vw,1.2rem)/1.7 var(--st-body);color:#27396a}
+body.stops.mondstadt .stop .copy a{display:inline-block;padding-bottom:.2rem;border-bottom:1px solid var(--m-coral);font:600 1.08rem/1.3 var(--st-body);letter-spacing:.02em;color:var(--m-red)}
+body.stops.mondstadt .stop .copy a:hover{color:var(--m-coral)}
+
+/* ---------- Mondstadt skyline: faint misty silhouettes between the chapters ---------- */
+body.stops.mondstadt .st-skyline{position:relative;height:clamp(7rem,14vw,11rem);overflow:hidden;background:none;border:0;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 35%,#000 85%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 35%,#000 85%,transparent 100%)}
+body.stops.mondstadt .st-skyline>svg{position:absolute;inset:0;display:block;width:100%;height:100%;opacity:.55}
+body.stops.mondstadt .st-skyline>.st-orn{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);width:min(20rem,76%);margin:0}
+
+/* ---------- good to know ---------- */
+body.stops.mondstadt .st-info{position:relative;max-width:var(--m-wrap);margin:0 auto;padding:clamp(1rem,2vw,1.5rem) var(--m-gutter) clamp(2.5rem,5vw,4rem);background:none;text-align:center}
+body.stops.mondstadt .st-info>h2{display:flex;align-items:center;justify-content:center;gap:1rem;margin:0 0 .4rem;font:400 clamp(1.7rem,3vw,2.4rem)/1.15 var(--st-display);color:var(--m-navy)}
+body.stops.mondstadt .st-info>h2::before,body.stops.mondstadt .st-info>h2::after{content:"";flex:none;width:.6rem;height:.6rem;background:var(--m-gold);transform:rotate(45deg)}
+body.stops.mondstadt .st-sub{margin:0 auto clamp(1.5rem,3vw,2.25rem);font:italic 400 1.1rem/1.5 var(--st-body);color:#2f4577}
+body.stops.mondstadt .st-tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:0 0 clamp(1.5rem,3vw,2.25rem);padding:0}
+body.stops.mondstadt .st-tips li,body.stops.mondstadt .st-incl>div{position:relative}
+body.stops.mondstadt .st-tips li::before{content:"";position:absolute;inset:.4rem;pointer-events:none;--g:linear-gradient(rgba(217,169,74,.95),rgba(217,169,74,.95));
+  background:var(--g) 0 0/.9rem 1px no-repeat,var(--g) 0 0/1px .9rem no-repeat,var(--g) 100% 0/.9rem 1px no-repeat,var(--g) 100% 0/1px .9rem no-repeat,var(--g) 0 100%/.9rem 1px no-repeat,var(--g) 0 100%/1px .9rem no-repeat,var(--g) 100% 100%/.9rem 1px no-repeat,var(--g) 100% 100%/1px .9rem no-repeat}
+body.stops.mondstadt .st-tips li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);column-gap:.9rem;align-items:start;margin:0;padding:1.15rem 1.2rem;text-align:left;
+  background:linear-gradient(135deg,#fffaf0,#f6e6cd 60%,#e4eef7);border:1px solid rgba(217,169,74,.85);border-radius:3px;box-shadow:0 .7rem 1.4rem rgba(46,78,132,.14),inset 0 0 0 .3rem rgba(255,255,255,.45)}
+body.stops.mondstadt .st-tips li img{grid-row:1/3;width:2.6rem;height:2.6rem;margin:0;padding:0;border:0;border-radius:0;background:none;object-fit:contain}
+body.stops.mondstadt .st-tips h3{margin:0 0 .25rem;font:400 1.15rem/1.25 var(--st-display);color:var(--m-navy)}
+body.stops.mondstadt .st-tips p{margin:0;font:400 1rem/1.45 var(--st-body);color:#3a4f82}
+
+body.stops.mondstadt .st-incl{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin:0 0 1.5rem;text-align:left}
+body.stops.mondstadt .st-incl>div{overflow:hidden;padding:0;background:linear-gradient(180deg,#fffaf0,#f6e6cd);border:1px solid rgba(217,169,74,.85);border-radius:3px;box-shadow:0 .8rem 1.6rem rgba(46,78,132,.14)}
+body.stops.mondstadt .st-incl>div::before{display:none}
+body.stops.mondstadt .st-incl h3{margin:0;padding:1.05rem 1.5rem;font:400 clamp(1.15rem,1.7vw,1.4rem)/1.25 var(--st-display);color:var(--m-paper);
+  background:var(--banner) right center/auto 100% no-repeat,linear-gradient(90deg,#1d315c,#456da8);border-bottom:2px solid var(--m-gold)}
+body.stops.mondstadt .st-incl .no h3{color:#fff;background:var(--banner) right center/auto 100% no-repeat,linear-gradient(90deg,#b0463a,#d9795c)}
+body.stops.mondstadt .st-incl ul{margin:0;padding:.7rem 1.5rem 1.2rem}
+body.stops.mondstadt .st-incl li{position:relative;margin:0;padding:.5rem 0 .5rem 1.4rem;border-top:1px dashed rgba(46,78,132,.2);font:400 1.05rem/1.5 var(--st-body);color:#27396a}
+body.stops.mondstadt .st-incl li:first-child{border-top:0}
+body.stops.mondstadt .st-incl li::before{content:"";position:absolute;left:.1rem;top:1rem;width:.45rem;height:.45rem;background:var(--m-blue);transform:rotate(45deg)}
+body.stops.mondstadt .st-incl .no li::before{background:var(--m-coral)}
+body.stops.mondstadt .st-fine{max-width:38rem;margin:0 auto;font:italic 400 1.02rem/1.6 var(--st-body);color:#14244d}
+
+/* ---------- previous / all / next ---------- */
+body.stops.mondstadt .st-more{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:1rem;max-width:var(--m-wrap);margin:0 auto;padding:0 var(--m-gutter) clamp(3.5rem,7vw,5rem);background:none;border:0}
+body.stops.mondstadt .st-more a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;padding:1rem 1.4rem;background:linear-gradient(135deg,#fffaf0,#f6e6cd);border:1px solid rgba(217,169,74,.9);border-radius:3px;box-shadow:0 .5rem 1.1rem rgba(46,78,132,.12);color:var(--m-navy);transition:transform .2s,box-shadow .2s}
+body.stops.mondstadt .st-more a:hover{transform:translateY(-2px);box-shadow:0 .8rem 1.4rem rgba(46,78,132,.2)}
+body.stops.mondstadt .st-more small{font:italic 400 1rem/1.3 var(--st-body);color:var(--m-coral)}
+body.stops.mondstadt .st-more strong{font:400 clamp(1.3rem,2.4vw,1.8rem)/1.2 var(--st-display);color:var(--m-navy)}
+body.stops.mondstadt .st-more .next{text-align:right}
+body.stops.mondstadt .st-more .all{align-items:center;text-align:center;background:linear-gradient(180deg,#d4654f,#b04a3f);border-color:var(--m-gold);color:#fff;font:600 1.02rem/1.3 var(--st-body);letter-spacing:.04em}
+
+/* ---------- final booking section: navy-to-blue ombre with a wavy cream edge ---------- */
+body.stops.mondstadt .cta-band{position:relative;overflow:hidden;padding-top:clamp(5rem,9vw,7rem);padding-bottom:clamp(4rem,8vw,6.5rem);border-top:0;color:#dbe4f5;
+  background:var(--seed-w) 7% 28%/1.5rem no-repeat,var(--seed-w) 93% 44%/1.2rem no-repeat,var(--seed-w) 14% 84%/1rem no-repeat,var(--seed-w) 84% 90%/1.4rem no-repeat,
+    var(--ic-feather) 5% 70%/2.2rem no-repeat,var(--ic-feather) 95% 78%/2.2rem no-repeat,
+    radial-gradient(ellipse at 50% 0,rgba(79,120,181,.6),transparent 62%),var(--lat-light),linear-gradient(180deg,#456da8 0%,#1d315c 40%,#162748 100%)}
+body.stops.mondstadt .cta-band::before{content:"";position:absolute;left:0;right:0;top:-1px;height:clamp(1.8rem,4vw,3rem);background:var(--wave-top) 0 0/100% 100% no-repeat;pointer-events:none}
+body.stops.mondstadt .cta-band::after{content:"";position:absolute;right:-3rem;top:3rem;width:min(22rem,50vw);aspect-ratio:1;background:var(--anemo-lg) center/contain no-repeat;opacity:.3;pointer-events:none}
+body.stops.mondstadt .cta-band>*{position:relative;z-index:1}
+body.stops.mondstadt .cta-band>.st-orn{margin:0 auto 1.25rem}
+body.stops.mondstadt .cta-band h2{color:var(--m-paper);font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15}
+body.stops.mondstadt .cta-band .cta-kicker{color:var(--m-apricot)}
+body.stops.mondstadt .cta-band .cta-lead,body.stops.mondstadt .cta-band .cta-note{color:#dbe4f5}
+body.stops.mondstadt .cta-band .cta-note a{color:var(--m-apricot);text-decoration:underline;text-underline-offset:.2em}
+body.stops.mondstadt .cta-lead{max-width:34rem;margin-left:auto;margin-right:auto;line-height:1.6}
+body.stops.mondstadt .cta-band .inquiry-form-mount{max-width:44rem;margin:2rem auto}
+body.stops.mondstadt .cta-actions{--cta-btn-r:999px}
+body.stops.mondstadt .cta-actions .btn-gold,body.stops.mondstadt .cta-actions .btn-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:3.2rem;padding:.9rem 2rem;border:1px solid;border-radius:var(--cta-btn-r);font:600 1.02rem/1.2 var(--st-body);letter-spacing:.04em;text-align:center;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s}
+body.stops.mondstadt .cta-actions .btn-gold{background:linear-gradient(180deg,#e8c068,#d9a94a);border-color:var(--m-apricot);color:#1d315c;box-shadow:0 .5rem 1.2rem rgba(0,0,0,.28)}
+body.stops.mondstadt .cta-actions .btn-gold:hover{background:linear-gradient(180deg,var(--m-apricot),#e8c068);transform:translateY(-2px)}
+body.stops.mondstadt .cta-actions .btn-ghost{background:rgba(247,235,216,.06);border-color:rgba(217,169,74,.8);color:var(--m-paper)}
+body.stops.mondstadt .cta-actions .btn-ghost:hover{background:rgba(217,169,74,.18);transform:translateY(-2px)}
+body.stops.mondstadt .cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:1.5rem}
+body.stops.mondstadt .site-footer{border-top:3px solid var(--m-gold);background-color:var(--m-navy-deep);background-image:var(--lat-light)}
+body.stops.mondstadt .foot-note{font-size:.8rem} /* shared .6rem is too small to read */
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  body.stops.mondstadt .st-intro::before,body.stops.mondstadt .st-intro::after{display:none}
+  body.stops.mondstadt .st-tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:820px){
+  /* on narrow screens the three destinations stack so each image stays readable */
+  body.stops.mondstadt .st-stops{grid-template-columns:minmax(0,1fr);gap:clamp(3rem,10vw,4.5rem)}
+  body.stops.mondstadt .st-stops>.stop,body.stops.mondstadt .st-stops>.stop.right{gap:1.75rem}
+  body.stops.mondstadt .stop>.stop-frame,body.stops.mondstadt .stop.right>.stop-frame{grid-column:1;grid-row:1}
+  body.stops.mondstadt .stop .copy,body.stops.mondstadt .stop.right .copy{grid-column:1;grid-row:2;justify-self:start;max-width:none}
+}
+@media (max-width:760px){
+  body.stops.mondstadt .st-hero{min-height:27rem}
+  body.stops.mondstadt .st-pkg{grid-template-columns:1fr}
+  body.stops.mondstadt .st-incl,body.stops.mondstadt .st-more{grid-template-columns:1fr}
+  body.stops.mondstadt .st-more .next{text-align:left}
+  body.stops.mondstadt .st-more .all{order:3}
+  body.stops.mondstadt .cta-band::after{display:none}
+  body.stops.mondstadt .cta-actions .btn-gold,body.stops.mondstadt .cta-actions .btn-ghost{flex:1 1 100%}
+}
+@media (max-width:560px){body.stops.mondstadt .st-tips{grid-template-columns:1fr}}
