@@ -1,101 +1,191 @@
-/* Sumeru — canopy greens */
+/* Sumeru — canopy greens on pale leaf parchment */
+
 body.stops{
   --st-page:#153b35;--st-display:'Alegreya',Georgia,serif;--st-body:'Alegreya',Georgia,serif;
   --st-hero-overlay:linear-gradient(rgba(14,50,40,.4),rgba(14,50,40,.45));
   --st-eyebrow-hero:#e9f1de;--st-h1:#f3f1d3;--st-btn-bg:transparent;--st-btn-fg:#f0f4e4;--st-btn-border:#dfe9d3;
   --st-stats-bg:#2a6650;--st-stats-fg:#e4efe1;
-  --st-intro-bg:#153b35;--st-intro-eyebrow:#8fb6a1;--st-intro-h2:#eef5ea;--st-intro-p:#b9d1c5;
+  --st-intro-bg:#e3ecd6;--st-intro-eyebrow:#2a6650;--st-intro-h2:#1d4a40;--st-intro-p:#345a4f;
   --st-stops-bg:#153b35;--st-frame:#2f6f55;--st-stop-overlay:linear-gradient(rgba(16,64,50,.35),rgba(16,64,50,.35));
   --st-num:#dfead2;--st-link:#eef5ea;--st-h1-weight:700;--st-h2-weight:400;--st-h3-weight:500;--st-tag-weight:400;--st-eyebrow-font:'Alegreya',serif;
-}
-.st-hero .copy{padding-left:2.2rem;border-left:1px solid rgba(240,244,228,.55);margin-left:-.6rem}
-.st-eyebrow{font-size:1.5rem;margin-bottom:.2rem}
-.st-hero h1{font-size:6rem;letter-spacing:.08em}
-.st-tag{font-weight:400;font-size:1.8rem}
-.st-intro{padding:5rem 8.8rem 4rem;gap:4rem}
-.st-intro .eyebrow{font-weight:500;letter-spacing:.06em;font-size:.9rem;margin-bottom:.8rem}
-.st-intro h2{font-size:3rem}
-
-.st-hero{background:var(--st-hero-overlay),url(../../assets/img/nations/sumeru-hero.jpg) center/cover no-repeat}
-
-/* ===== Layout (matches the finalized Mondstadt page; colours come from the tokens above) =====
-   All rules are scoped under body.stops.sumeru so no other nation page or shared file is affected. */
-body.stops.sumeru{
-  --m-wide:96rem;--m-wide-gutter:clamp(1rem,2.5vw,2.5rem);--m-gutter:clamp(1.25rem,4.5vw,4rem);
-  --l-pad:max(var(--m-wide-gutter),calc((100% - var(--m-wide))/2 + var(--m-wide-gutter)));
+  /* page helpers */
+  --l-red:#1d4a40;--l-deep:#153b35;--l-darkest:#0d2622;--l-cream:#e3ecd6;--l-paper:#f4f6e4;
+  --l-gold:#86b27d;--l-gold-hi:#dfead2;--l-gold-line:#5f9a78;--l-coral:#2a6650;--l-ink:#1d4a40;--l-text:#345a4f;
+  --m-wrap:72rem;--m-gutter:clamp(1.25rem,4.5vw,4rem);
+  --m-wide:96rem;--m-wide-gutter:clamp(1rem,2.5vw,2.5rem);
+  /* icons */
   --ic-cal:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dfead2' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
-  --ic-star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z' fill='%23dfead2'/%3E%3C/svg%3E");
-  --ic-feather:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%23dfead2' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 28C6 14 16 6 28 4 26 16 18 26 4 28Z'/%3E%3Cpath d='M4 28 22 10'/%3E%3C/svg%3E");
+  --ic-coin:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z' fill='%23dfead2'/%3E%3C/svg%3E");
+  --ic-peak:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%23dfead2' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 28C6 14 16 6 28 4 26 16 18 26 4 28Z'/%3E%3Cpath d='M4 28 22 10'/%3E%3C/svg%3E");
+  --wave-hero:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V24C160 6 320 36 520 22S900 2 1200 20V40Z' fill='%23e3ecd6'/%3E%3C/svg%3E");
+  --wave-top:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1200V20C1040 38 880 2 700 20S340 38 180 20 60 8 0 20Z' fill='%23e3ecd6'/%3E%3C/svg%3E");
+  --lat-dark:repeating-linear-gradient(45deg,rgba(29,74,64,.05) 0 1px,transparent 1px 24px),repeating-linear-gradient(-45deg,rgba(29,74,64,.05) 0 1px,transparent 1px 24px);
+  --lat-light:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 1px,transparent 1px 24px),repeating-linear-gradient(-45deg,rgba(255,255,255,.05) 0 1px,transparent 1px 24px);
 }
+
+.st-eyebrow{font-size:1.5rem;margin-bottom:.2rem}
+.st-intro .eyebrow{font-size:1.1rem}
+
+/* ---------- ornament: line · diamond · line ---------- */
+.sumeru .st-orn{display:flex;align-items:center;justify-content:center;gap:.9rem;width:min(18rem,70%);margin:0 auto;color:var(--l-gold-line)}
+.sumeru .st-orn::before,.sumeru .st-orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,currentColor)}
+.sumeru .st-orn::after{background:linear-gradient(270deg,transparent,currentColor)}
+.sumeru .st-orn i{flex:none;width:.7rem;height:.7rem;background:currentColor;transform:rotate(45deg)}
 
 /* ---------- hero ---------- */
-body.stops.sumeru .st-hero{position:relative;display:flex;align-items:center;overflow:hidden;
-  min-height:clamp(33rem,46vh,43rem);padding:clamp(2rem,4.5vh,3rem) var(--m-wide-gutter) clamp(4rem,7vh,5rem)}
+body.stops.sumeru .st-hero{
+  position:relative;display:flex;align-items:center;overflow:hidden;
+  min-height:clamp(33rem,46vh,43rem);padding:clamp(2rem,4.5vh,3rem) var(--m-wide-gutter) clamp(4rem,7vh,5rem);
+  background:linear-gradient(90deg,rgba(13,38,34,.74) 0%,rgba(13,38,34,.42) 48%,rgba(13,38,34,.1) 80%),
+    var(--st-hero-overlay),url(../../assets/img/nations/sumeru-hero.jpg) center/cover no-repeat}
+body.stops.sumeru .st-hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:var(--wave-hero) 0 100%/100% clamp(2rem,4.5vw,3.4rem) no-repeat,var(--lat-light)}
 body.stops.sumeru .st-hero .copy{position:relative;z-index:1;width:100%;max-width:var(--m-wide);margin:0 auto;text-align:left}
 body.stops.sumeru .st-hero .copy>*{max-width:46rem}
 body.stops.sumeru .st-hero .copy>h1{max-width:none}
-body.stops.sumeru .st-eyebrow{margin:0 0 .6rem;font-size:clamp(1.1rem,1.8vw,1.4rem);line-height:1.3}
-body.stops.sumeru .st-hero h1{margin:0 0 .6rem;font-size:clamp(2.8rem,6vw,4.4rem);line-height:1;overflow-wrap:anywhere}
-body.stops.sumeru .st-tag{margin:0 0 .9rem;font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.35}
-body.stops.sumeru .st-desc{margin:0 0 1.2rem;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.65}
+body.stops.sumeru .st-eyebrow{display:flex;align-items:center;gap:.8rem;margin:0 0 .6rem;font:italic 400 clamp(1.1rem,1.8vw,1.4rem)/1.3 var(--st-body);letter-spacing:.02em;color:var(--st-eyebrow-hero)}
+body.stops.sumeru .st-eyebrow::before{content:"";flex:none;width:2.5rem;height:1px;background:var(--l-gold-line)}
+body.stops.sumeru .st-hero h1{margin:0 0 .6rem;font:var(--st-h1-weight) clamp(2.8rem,6vw,4.4rem)/1 var(--st-display);letter-spacing:.03em;overflow-wrap:anywhere;color:var(--st-h1);text-shadow:0 2px 24px rgba(8,30,26,.55)}
+body.stops.sumeru .st-tag{margin:0 0 .9rem;font:italic 500 clamp(1.25rem,2.2vw,1.6rem)/1.35 var(--st-body);color:var(--l-gold-hi)}
+body.stops.sumeru .st-desc{margin:0 0 1.2rem;font:400 clamp(1.05rem,1.4vw,1.2rem)/1.65 var(--st-body);color:var(--l-paper)}
+body.stops.sumeru .st-btn{display:inline-flex;align-items:center;max-width:100%;padding:.95rem 1.7rem;border:1px solid var(--l-gold-line);border-radius:3px;background:linear-gradient(180deg,#eef5ea,#86b27d);color:#153b35;font:600 1.02rem/1.25 var(--st-body);letter-spacing:.04em;text-align:left;cursor:pointer;box-shadow:0 .7rem 1.5rem rgba(8,30,26,.4),inset 0 0 0 2px rgba(244,246,228,.2);transition:filter .2s,transform .2s}
+body.stops.sumeru .st-btn::after{content:"→";margin-left:.75rem}
+body.stops.sumeru .st-btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
+
+/* ---------- one continuous parchment atmosphere ---------- */
+body.stops.sumeru .st-body{position:relative;overflow:hidden;
+  background:radial-gradient(circle at 20% 12%,rgba(95,154,120,.7) 0 1.5px,transparent 2.5px),radial-gradient(circle at 78% 30%,rgba(95,154,120,.65) 0 1.5px,transparent 2.5px),radial-gradient(circle at 36% 62%,rgba(95,154,120,.65) 0 1.5px,transparent 2.5px),
+    radial-gradient(ellipse at 50% 0,rgba(134,178,125,.25),transparent 55%),var(--lat-dark),
+    linear-gradient(180deg,#e3ecd6 0%,#d6e4c8 45%,#cadcb9 60%,#e3ecd6 100%)}
 
 /* ---------- package details: compact strip directly beneath the hero ---------- */
-body.stops.sumeru .st-package{position:relative;margin:0;padding:clamp(1.25rem,2.5vw,2rem) var(--l-pad);background:var(--st-stats-bg)}
-body.stops.sumeru .st-package>h2{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap} /* heading kept for screen readers */
+body.stops.sumeru .st-package{position:relative;max-width:var(--m-wide);margin:0 auto;padding:clamp(1.25rem,2.5vw,2rem) var(--m-wide-gutter) clamp(1rem,2vw,1.5rem)}
+body.stops.sumeru .st-package>h2{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 body.stops.sumeru .st-pkg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.75rem,1.5vw,1.25rem);margin:0;padding:0;list-style:none}
 body.stops.sumeru .st-pkg li{position:relative;display:grid;grid-template-columns:3rem minmax(0,1fr);column-gap:1rem;align-items:center;margin:0;padding:.85rem 1.3rem;text-align:left;
-  background:linear-gradient(135deg,#1d4a40,#153b35 70%);border:1px solid rgba(223,234,210,.5);border-radius:3px;box-shadow:0 .7rem 1.4rem rgba(0,0,0,.22),inset 0 0 0 .3rem rgba(255,255,255,.06)}
-body.stops.sumeru .st-pkg li::before{content:"";position:absolute;inset:.4rem;pointer-events:none;--g:linear-gradient(rgba(223,234,210,.7),rgba(223,234,210,.7));
+  background:linear-gradient(135deg,#f6f8ec,#e3ecd6 65%,#cadcb9);border:1px solid rgba(95,154,120,.9);border-radius:3px;box-shadow:0 .7rem 1.4rem rgba(21,59,53,.16),inset 0 0 0 .3rem rgba(255,255,255,.45)}
+body.stops.sumeru .st-pkg li::before{content:"";position:absolute;inset:.4rem;pointer-events:none;--g:linear-gradient(rgba(95,154,120,.95),rgba(95,154,120,.95));
   background:var(--g) 0 0/.9rem 1px no-repeat,var(--g) 0 0/1px .9rem no-repeat,var(--g) 100% 0/.9rem 1px no-repeat,var(--g) 100% 0/1px .9rem no-repeat,var(--g) 0 100%/.9rem 1px no-repeat,var(--g) 0 100%/1px .9rem no-repeat,var(--g) 100% 100%/.9rem 1px no-repeat,var(--g) 100% 100%/1px .9rem no-repeat}
-body.stops.sumeru .st-pkg-ic{display:block;grid-row:1/3;width:3rem;height:3rem;margin:0;border:1px solid #dfead2;border-radius:50%;
-  background:var(--ic-cal) center/1.35rem no-repeat,linear-gradient(180deg,#2a6650,#153b35);box-shadow:0 .4rem .9rem rgba(0,0,0,.3),inset 0 0 0 2px rgba(255,255,255,.08)}
-body.stops.sumeru .st-pkg li:nth-child(2) .st-pkg-ic{background-image:var(--ic-star),linear-gradient(180deg,#2a6650,#153b35)}
-body.stops.sumeru .st-pkg li:nth-child(3) .st-pkg-ic{background-image:var(--ic-feather),linear-gradient(180deg,#2a6650,#153b35)}
-body.stops.sumeru .st-pkg h3{margin:0 0 .1rem;font:italic 400 1.05rem/1.3 var(--st-body);letter-spacing:.03em;color:#8fb6a1}
-body.stops.sumeru .st-pkg p{margin:0;font:400 clamp(1.15rem,1.8vw,1.5rem)/1.25 var(--st-display);color:#eef5ea}
-body.stops.sumeru .st-pkg [data-package-price]{color:#dfead2}
+body.stops.sumeru .st-pkg-ic{display:block;grid-row:1/3;width:3rem;height:3rem;margin:0;border:1px solid var(--l-gold-line);border-radius:50%;
+  background:var(--ic-cal) center/1.35rem no-repeat,linear-gradient(180deg,#2a6650,#153b35);box-shadow:0 .4rem .9rem rgba(21,59,53,.3),inset 0 0 0 2px rgba(244,246,228,.12)}
+body.stops.sumeru .st-pkg li:nth-child(2) .st-pkg-ic{background-image:var(--ic-coin),linear-gradient(180deg,#2a6650,#153b35)}
+body.stops.sumeru .st-pkg li:nth-child(3) .st-pkg-ic{background-image:var(--ic-peak),linear-gradient(180deg,#2a6650,#153b35)}
+body.stops.sumeru .st-pkg h3{margin:0 0 .1rem;font:italic 400 1.05rem/1.3 var(--st-body);letter-spacing:.03em;color:var(--l-coral)}
+body.stops.sumeru .st-pkg p{margin:0;font:400 clamp(1.15rem,1.8vw,1.5rem)/1.25 var(--st-display);color:var(--l-red)}
+body.stops.sumeru .st-pkg [data-package-price]{color:var(--l-coral)}
 body.stops.sumeru .st-pkg [data-package-focus]{text-transform:capitalize}
 
-/* ---------- introduction: centred, narrow column ---------- */
-body.stops.sumeru .st-intro{position:relative;display:block;overflow:visible;max-width:none;margin:0;padding:clamp(2.5rem,5vw,4rem) var(--m-gutter) clamp(4rem,8vw,6.5rem);gap:0;background:var(--st-intro-bg);text-align:center}
+/* ---------- introduction: its own centred chapter ---------- */
+body.stops.sumeru .st-front{display:block;max-width:none;margin:0;padding:0}
+body.stops.sumeru .st-intro{position:relative;display:block;overflow:visible;max-width:46rem;margin:0 auto;padding:clamp(2.5rem,5vw,4rem) var(--m-gutter) clamp(3rem,6vw,4.5rem);
+  background:radial-gradient(ellipse at 50% 45%,rgba(255,255,255,.55),transparent 65%);text-align:center}
+body.stops.sumeru .st-intro::before,body.stops.sumeru .st-intro::after{display:none}
 body.stops.sumeru .st-intro>*{position:relative;transform:none;float:none;width:auto;min-width:0;max-width:none;margin:0;padding:0;border:0}
-body.stops.sumeru .st-intro>div{max-width:36rem;margin:0 auto 1.25rem}
-body.stops.sumeru .st-intro .eyebrow{margin:0 0 .8rem;text-align:center;color:var(--st-intro-eyebrow)}
-body.stops.sumeru .st-intro h2{margin:0;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.2;overflow-wrap:break-word;color:var(--st-intro-h2)}
-body.stops.sumeru .st-intro>p{max-width:34rem;margin:0 auto;font-size:clamp(1.05rem,1.35vw,1.2rem);line-height:1.8;color:var(--st-intro-p)}
+body.stops.sumeru .st-intro>div:not(.st-orn){max-width:36rem;margin:0 auto 1.25rem}
+body.stops.sumeru .st-intro .eyebrow{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:0 0 .8rem;font:italic 400 1.1rem/1.4 var(--st-body);letter-spacing:.03em;text-transform:none;color:var(--st-intro-eyebrow)}
+body.stops.sumeru .st-intro h2{margin:0;font:var(--st-h2-weight) clamp(1.9rem,3.6vw,2.7rem)/1.2 var(--st-display);letter-spacing:.01em;overflow-wrap:break-word;color:var(--st-intro-h2)}
+body.stops.sumeru .st-intro>.st-orn{width:min(16rem,70%);margin:0 auto 1.5rem}
+body.stops.sumeru .st-intro>p{max-width:34rem;margin:0 auto;font:400 clamp(1.05rem,1.35vw,1.2rem)/1.8 var(--st-body);color:var(--st-intro-p)}
 
-/* ---------- destinations: three cards in one horizontal row, text beneath each image ---------- */
-body.stops.sumeru .st-stops{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;column-gap:clamp(1.25rem,2.5vw,2.5rem);row-gap:0;overflow:visible;max-width:none;margin:0;padding:0 var(--l-pad) clamp(3rem,6vw,5rem);background:var(--st-stops-bg)}
-body.stops.sumeru .st-stops::before,body.stops.sumeru .st-stops::after{display:none}
+/* ---------- destinations: three chapters in one row, text beneath each image ---------- */
+body.stops.sumeru .st-stops{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;column-gap:clamp(1.25rem,2.5vw,2.5rem);row-gap:.75rem;overflow:visible;max-width:var(--m-wide);margin:0 auto;padding:0 var(--m-wide-gutter) clamp(2.5rem,5vw,4rem);background:none}
+body.stops.sumeru .st-stops::before{content:"";display:block;grid-column:1/-1;width:min(18rem,70%);height:1px;margin:0 auto 1.5rem;background:linear-gradient(90deg,transparent,var(--l-gold-line),transparent)}
+body.stops.sumeru .st-stops::after{display:none}
 body.stops.sumeru .st-stops>.stop,body.stops.sumeru .st-stops>.stop.right{
   position:relative;display:grid;grid-template-columns:minmax(0,1fr);align-content:start;align-items:start;gap:clamp(1.25rem,2vw,1.75rem);
   max-width:none;min-width:0;min-height:0;height:auto;margin:0;padding:0;background:none;border:0;box-shadow:none;overflow:visible}
-body.stops.sumeru .stop::before,body.stops.sumeru .stop::after{display:none}
+body.stops.sumeru .stop::after{display:none}
+/* the photograph: cream border, gold line, overlay, tilted like a pinned print */
+body.stops.sumeru .stop::before{display:none}
 body.stops.sumeru .stop>.stop-frame{position:relative;display:block;grid-column:1;grid-row:1;width:100%;margin:0;aspect-ratio:4/3;overflow:hidden;
-  background:var(--img) center/cover no-repeat,var(--st-stops-bg);border:.5rem solid var(--st-frame);border-radius:3px;
-  box-shadow:0 0 0 1px #dfead2,0 1.4rem 2.4rem rgba(0,0,0,.4)}
+  background:var(--img) center/cover no-repeat,linear-gradient(160deg,#1d4a40,#86b27d);border:.5rem solid var(--l-cream);border-radius:3px;
+  box-shadow:0 0 0 1px var(--l-gold-line),0 1.4rem 2.4rem rgba(21,59,53,.32)}
 body.stops.sumeru .stop.right>.stop-frame{grid-column:1}
+body.stops.sumeru .stop:nth-child(odd)>.stop-frame{transform:rotate(-1.4deg)}
+body.stops.sumeru .stop:nth-child(even)>.stop-frame{transform:rotate(1.4deg)}
 body.stops.sumeru .stop-frame>.stop-img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;margin:0;padding:0;border:0;object-fit:cover;object-position:center}
-body.stops.sumeru .stop-frame::before{content:"";position:absolute;inset:.5rem;z-index:2;pointer-events:none;--g:linear-gradient(#dfead2,#dfead2);
-  background:var(--g) 0 0/1.4rem 2px no-repeat,var(--g) 0 0/2px 1.4rem no-repeat,var(--g) 100% 0/1.4rem 2px no-repeat,var(--g) 100% 0/2px 1.4rem no-repeat,
-    var(--g) 0 100%/1.4rem 2px no-repeat,var(--g) 0 100%/2px 1.4rem no-repeat,var(--g) 100% 100%/1.4rem 2px no-repeat,var(--g) 100% 100%/2px 1.4rem no-repeat}
-body.stops.sumeru .stop-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:var(--st-stop-overlay)}
-body.stops.sumeru .stop .copy{display:block;position:static;inset:auto;transform:none;grid-column:1;grid-row:2;justify-self:stretch;width:auto;min-width:0;max-width:none;padding:0;background:none;text-align:left}
-body.stops.sumeru .stop.right .copy{grid-column:1;justify-self:stretch}
-body.stops.sumeru .stop .n{display:block;margin:0 0 .5rem;padding:0;background:none;border:0;border-radius:0;font:400 clamp(2.4rem,4vw,3.4rem)/1 var(--st-display);letter-spacing:.02em;color:var(--st-num);-webkit-text-stroke:0}
-body.stops.sumeru .stop h3{display:block;margin:0 0 1rem;padding:0;background:none;border:0;font:var(--st-h3-weight) clamp(1.6rem,2.6vw,2.2rem)/1.12 var(--st-display);color:#eef5ea}
-body.stops.sumeru .stop h3::after{content:"";display:block;width:4rem;height:2px;margin-top:.9rem;background:linear-gradient(90deg,var(--st-num),transparent)}
-body.stops.sumeru .stop .copy p{margin:0 0 1.5rem;font:400 clamp(1.05rem,1.3vw,1.2rem)/1.7 var(--st-body);color:#b9d1c5}
-body.stops.sumeru .stop .copy a{display:inline-block;padding-bottom:.2rem;border-bottom:1px solid var(--st-link);font:600 1.08rem/1.3 var(--st-body);letter-spacing:.02em;color:var(--st-link)}
-body.stops.sumeru .stop .copy a:hover{opacity:.8}
+body.stops.sumeru .stop-frame::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--st-stop-overlay)}
+body.stops.sumeru .stop-frame::after{content:"";position:absolute;inset:.8rem;z-index:2;border:1px solid rgba(95,154,120,.9);pointer-events:none;box-shadow:inset 0 -3rem 3rem -2.2rem rgba(13,38,34,.4)}
+body.stops.sumeru .stop .copy,body.stops.sumeru .stop.right .copy{display:block;position:static;inset:auto;transform:none;grid-column:1;grid-row:2;justify-self:stretch;width:auto;min-width:0;max-width:none;padding:0;background:none;text-align:left;color:var(--l-ink)}
+body.stops.sumeru .stop .n{display:flex;align-items:center;gap:1rem;margin:0 0 .5rem;padding:0;background:none;border:0;border-radius:0;font:400 clamp(2.4rem,4vw,3.4rem)/1 var(--st-display);letter-spacing:.02em;color:var(--l-coral);-webkit-text-stroke:0}
+body.stops.sumeru .stop .n::after{content:"";width:4.5rem;height:1px;background:linear-gradient(90deg,var(--l-gold-line),transparent)}
+body.stops.sumeru .stop h3{display:block;margin:0 0 1rem;padding:0;background:none;border:0;font:var(--st-h3-weight) clamp(1.6rem,2.6vw,2.2rem)/1.12 var(--st-display);color:var(--l-red)}
+body.stops.sumeru .stop h3::after{content:"";display:block;width:4rem;height:2px;margin-top:.9rem;background:linear-gradient(90deg,var(--l-coral),var(--l-gold))}
+body.stops.sumeru .stop .copy p{margin:0 0 1.5rem;font:400 clamp(1.05rem,1.3vw,1.2rem)/1.7 var(--st-body);color:var(--l-text)}
+body.stops.sumeru .stop .copy a{display:inline-block;padding-bottom:.2rem;border-bottom:1px solid var(--l-coral);font:600 1.08rem/1.3 var(--st-body);letter-spacing:.02em;color:var(--l-red)}
+body.stops.sumeru .stop .copy a:hover{color:var(--l-coral)}
+
+/* ---------- good to know ---------- */
+body.stops.sumeru .st-info{position:relative;max-width:var(--m-wrap);margin:0 auto;padding:clamp(1rem,2vw,1.5rem) var(--m-gutter) clamp(2.5rem,5vw,4rem);background:none;text-align:center}
+body.stops.sumeru .st-info>h2{display:flex;align-items:center;justify-content:center;gap:1rem;margin:0 0 .4rem;font:var(--st-h2-weight) clamp(1.7rem,3vw,2.4rem)/1.15 var(--st-display);color:var(--l-red)}
+body.stops.sumeru .st-info>h2::before,body.stops.sumeru .st-info>h2::after{content:"";flex:none;width:.6rem;height:.6rem;background:var(--l-gold);transform:rotate(45deg)}
+body.stops.sumeru .st-sub{margin:0 auto clamp(1.5rem,3vw,2.25rem);font:italic 400 1.1rem/1.5 var(--st-body);color:var(--l-text)}
+body.stops.sumeru .st-tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:0 0 clamp(1.5rem,3vw,2.25rem);padding:0;list-style:none}
+body.stops.sumeru .st-tips li,body.stops.sumeru .st-incl>div{position:relative}
+body.stops.sumeru .st-tips li::before{content:"";position:absolute;inset:.4rem;pointer-events:none;--g:linear-gradient(rgba(95,154,120,.95),rgba(95,154,120,.95));
+  background:var(--g) 0 0/.9rem 1px no-repeat,var(--g) 0 0/1px .9rem no-repeat,var(--g) 100% 0/.9rem 1px no-repeat,var(--g) 100% 0/1px .9rem no-repeat,var(--g) 0 100%/.9rem 1px no-repeat,var(--g) 0 100%/1px .9rem no-repeat,var(--g) 100% 100%/.9rem 1px no-repeat,var(--g) 100% 100%/1px .9rem no-repeat}
+body.stops.sumeru .st-tips li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);column-gap:.9rem;align-items:start;margin:0;padding:1.15rem 1.2rem;text-align:left;
+  background:linear-gradient(135deg,#f6f8ec,#e3ecd6 65%,#cadcb9);border:1px solid rgba(95,154,120,.9);border-radius:3px;box-shadow:0 .7rem 1.4rem rgba(21,59,53,.16),inset 0 0 0 .3rem rgba(255,255,255,.45)}
+body.stops.sumeru .st-tips li img{grid-row:1/3;width:2.6rem;height:2.6rem;margin:0;padding:0;border:0;border-radius:0;background:none;object-fit:contain}
+body.stops.sumeru .st-tips h3{margin:0 0 .25rem;font:400 1.15rem/1.25 var(--st-display);color:var(--l-red)}
+body.stops.sumeru .st-tips p{margin:0;font:400 1rem/1.45 var(--st-body);color:var(--l-text)}
+body.stops.sumeru .st-incl{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin:0 0 1.5rem;text-align:left}
+body.stops.sumeru .st-incl>div{overflow:hidden;padding:0;background:linear-gradient(180deg,#f6f8ec,#e3ecd6);border:1px solid rgba(95,154,120,.9);border-radius:3px;box-shadow:0 .8rem 1.6rem rgba(21,59,53,.16)}
+body.stops.sumeru .st-incl>div::before{display:none}
+body.stops.sumeru .st-incl h3{margin:0;padding:1.05rem 1.5rem;font:400 clamp(1.15rem,1.7vw,1.4rem)/1.25 var(--st-display);color:var(--l-paper);background:linear-gradient(90deg,#1d4a40,#2f7a5f);border-bottom:2px solid var(--l-gold-line)}
+body.stops.sumeru .st-incl .no h3{color:#fff;background:linear-gradient(90deg,#153b35,#345a4f)}
+body.stops.sumeru .st-incl ul{margin:0;padding:.7rem 1.5rem 1.2rem;list-style:none}
+body.stops.sumeru .st-incl li{position:relative;margin:0;padding:.5rem 0 .5rem 1.4rem;border-top:1px dashed rgba(29,74,64,.22);font:400 1.05rem/1.5 var(--st-body);color:var(--l-ink)}
+body.stops.sumeru .st-incl li:first-child{border-top:0}
+body.stops.sumeru .st-incl li::before{content:"";position:absolute;left:.1rem;top:1rem;width:.45rem;height:.45rem;background:var(--l-gold);transform:rotate(45deg)}
+body.stops.sumeru .st-incl .no li::before{background:var(--l-coral)}
+body.stops.sumeru .st-fine{max-width:38rem;margin:0 auto;font:italic 400 1.02rem/1.6 var(--st-body);color:var(--l-deep)}
+
+/* ---------- previous / all / next ---------- */
+body.stops.sumeru .st-more{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:1rem;max-width:var(--m-wrap);margin:0 auto;padding:0 var(--m-gutter) clamp(3.5rem,7vw,5rem);background:none;border:0}
+body.stops.sumeru .st-more a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;padding:1rem 1.4rem;background:linear-gradient(135deg,#f6f8ec,#e3ecd6);border:1px solid rgba(95,154,120,.95);border-radius:3px;box-shadow:0 .5rem 1.1rem rgba(21,59,53,.14);color:var(--l-red);transition:transform .2s,box-shadow .2s}
+body.stops.sumeru .st-more a:hover{transform:translateY(-2px);box-shadow:0 .8rem 1.4rem rgba(21,59,53,.22)}
+body.stops.sumeru .st-more small{font:italic 400 1rem/1.3 var(--st-body);color:var(--l-coral)}
+body.stops.sumeru .st-more strong{font:400 clamp(1.3rem,2.4vw,1.8rem)/1.2 var(--st-display);color:var(--l-red)}
+body.stops.sumeru .st-more .next{text-align:right}
+body.stops.sumeru .st-more .all{align-items:center;text-align:center;background:linear-gradient(180deg,#eef5ea,#86b27d);border-color:var(--l-gold-line);color:#153b35;font:600 1.02rem/1.3 var(--st-body);letter-spacing:.04em}
+
+/* ---------- final booking section: deep ombre with a wavy parchment edge ---------- */
+body.stops.sumeru .cta-band{position:relative;overflow:hidden;padding-top:clamp(5rem,9vw,7rem);padding-bottom:clamp(4rem,8vw,6.5rem);border-top:0;color:#e4efe1;
+  background:radial-gradient(ellipse at 50% 0,rgba(42,102,80,.55),transparent 62%),var(--lat-light),linear-gradient(180deg,#1d4a40 0%,#153b35 45%,#0d2622 100%)}
+body.stops.sumeru .cta-band::before{content:"";position:absolute;left:0;right:0;top:-1px;height:clamp(1.8rem,4vw,3rem);background:var(--wave-top) 0 0/100% 100% no-repeat;pointer-events:none}
+body.stops.sumeru .cta-band>*{position:relative;z-index:1}
+body.stops.sumeru .cta-band h2{color:var(--l-paper);font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15}
+body.stops.sumeru .cta-band .cta-kicker{color:var(--l-gold-hi)}
+body.stops.sumeru .cta-band .cta-lead,body.stops.sumeru .cta-band .cta-note{color:#e4efe1}
+body.stops.sumeru .cta-band .cta-note a{color:var(--l-gold-hi);text-decoration:underline;text-underline-offset:.2em}
+body.stops.sumeru .cta-lead{max-width:34rem;margin-left:auto;margin-right:auto;line-height:1.6}
+body.stops.sumeru .cta-band .inquiry-form-mount{max-width:44rem;margin:2rem auto}
+body.stops.sumeru .cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:1.5rem;--cta-btn-r:999px}
+body.stops.sumeru .cta-actions .btn-gold,body.stops.sumeru .cta-actions .btn-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:3.2rem;padding:.9rem 2rem;border:1px solid;border-radius:var(--cta-btn-r);font:600 1.02rem/1.2 var(--st-body);letter-spacing:.04em;text-align:center;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s}
+body.stops.sumeru .cta-actions .btn-gold{background:linear-gradient(180deg,#eef5ea,#86b27d);border-color:var(--l-gold-hi);color:#153b35;box-shadow:0 .5rem 1.2rem rgba(0,0,0,.3)}
+body.stops.sumeru .cta-actions .btn-gold:hover{background:linear-gradient(180deg,#f6faf0,#eef5ea);transform:translateY(-2px)}
+body.stops.sumeru .cta-actions .btn-ghost{background:rgba(244,246,228,.06);border-color:rgba(223,234,210,.8);color:var(--l-paper)}
+body.stops.sumeru .cta-actions .btn-ghost:hover{background:rgba(223,234,210,.18);transform:translateY(-2px)}
+body.stops.sumeru .site-footer{border-top:3px solid var(--l-gold-line)}
+body.stops.sumeru .foot-note{font-size:.8rem}
 
 /* ---------- responsive ---------- */
+@media (max-width:1000px){
+  body.stops.sumeru .st-tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (max-width:820px){
   body.stops.sumeru .st-stops{grid-template-columns:minmax(0,1fr);gap:clamp(3rem,10vw,4.5rem)}
   body.stops.sumeru .st-stops>.stop,body.stops.sumeru .st-stops>.stop.right{gap:1.75rem}
+  body.stops.sumeru .stop>.stop-frame,body.stops.sumeru .stop.right>.stop-frame{grid-column:1;grid-row:1}
   body.stops.sumeru .stop .copy,body.stops.sumeru .stop.right .copy{justify-self:start}
 }
 @media (max-width:760px){
   body.stops.sumeru .st-hero{min-height:27rem}
   body.stops.sumeru .st-pkg{grid-template-columns:1fr}
+  body.stops.sumeru .st-incl,body.stops.sumeru .st-more{grid-template-columns:1fr}
+  body.stops.sumeru .st-more .next{text-align:left}
+  body.stops.sumeru .st-more .all{order:3}
+  body.stops.sumeru .cta-actions .btn-gold,body.stops.sumeru .cta-actions .btn-ghost{flex:1 1 100%}
 }
+@media (max-width:560px){body.stops.sumeru .st-tips{grid-template-columns:1fr}}
