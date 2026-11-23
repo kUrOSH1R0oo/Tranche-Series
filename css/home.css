@@ -32,15 +32,15 @@
 .about-copy p {font-size: 1.16rem;line-height: 1.55;margin-bottom: 1.8rem;color: #5a6a90;}
 
 /* director */
-.director{position:relative;min-height:46rem;padding:3rem 5rem;background:linear-gradient(#dcdcdc,#d7dbe4 60%,#d2d8e6);overflow:hidden;color:#4e5f86}
+.director{position:relative;display:flex;align-items:center;min-height:46rem;padding:3rem 5rem;background:linear-gradient(#dcdcdc,#d7dbe4 60%,#d2d8e6);overflow:hidden;color:#4e5f86}
 .director .statue{position:absolute;left:-4rem;bottom:-3rem;width:20rem;opacity:.5}
 .director .clock{position:absolute;left:17rem;bottom:-5rem;width:28rem;opacity:.28}
 .director .portrait{position:absolute;left:6rem;bottom:-1rem;top:auto;height:90%;width:auto;max-width:36rem;object-fit:contain;object-position:center bottom;-webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 46%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 62% 58% at 50% 46%,#000 55%,transparent 100%)}
-.director-copy{position:relative;margin-left:auto;max-width:36rem;text-align:right;padding-top:0}
-.director-copy .kicker{font-weight:700;font-size:1.3rem;color:#4b5b83;margin-bottom:.2rem}
-.director-copy h2{justify-content:flex-end;font-size:2.3rem;text-transform:uppercase;color:#4c5f88;margin-bottom:1rem}
-.director-copy h2 img{width:2.2rem;height:2.2rem}
-.director-copy p{font-size:1.05rem;line-height:1.5;margin-bottom:1rem;color:#5b6a91}
+.director-copy{position:relative;margin-left:auto;max-width:48rem;text-align:right;padding-top:0}
+.director-copy .kicker{font-weight:700;font-size:2.3rem;color:#4b5b83;margin-bottom:.2rem}
+.director-copy h2{justify-content:flex-end;font-size:3.4rem;text-transform:uppercase;color:#4c5f88;margin-bottom:1.4rem}
+.director-copy h2 img{width:3.2rem;height:3.2rem}
+.director-copy p{font-size:1.3rem;line-height:1.6;margin-bottom:1.3rem;color:#5b6a91}
 
 /* purpose */
 .purpose{position:relative;padding:2.5rem 5rem 3rem;background:linear-gradient(rgba(150,165,205,.55),rgba(210,205,200,.5)),url(../assets/img/home/hero-bg.webp) center/cover;color:#fff}
@@ -81,6 +81,14 @@
 .nation:hover .go{background:var(--gold);border-color:var(--gold);color:var(--navy)}
 .nation:hover .go img{transform:translateX(.25rem);filter:invert(1)}
 
+/* hover photo slideshow: 3 gallery photos, 4s each, slow crossfade loop */
+.nation .slides{position:absolute;inset:0;z-index:-2;opacity:0;transition:opacity .6s;pointer-events:none}
+.nation .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.nation:hover .slides,.nation:focus-visible .slides{opacity:1}
+.nation:hover .slides img,.nation:focus-visible .slides img{animation:nation-slide 12s linear infinite both}
+.nation .slides img:nth-child(2){animation-delay:4s!important}
+.nation .slides img:nth-child(3){animation-delay:8s!important}
+@keyframes nation-slide{0%{opacity:0}8%{opacity:1}33%{opacity:1}41%{opacity:0}100%{opacity:0}}
 /* mobile view: no hover, so show every card open in a swipe row */
 @media (max-width:800px),(hover:none){
   .nation-grid{justify-content:flex-start;height:auto;overflow-x:auto;padding:.8rem 1.4rem 1rem;scroll-snap-type:x mandatory;scroll-padding:0 1.4rem}
@@ -121,9 +129,9 @@
   .about-bg{background-size:100% auto,90% auto;background-position:center top,center 22rem}
   .about-links{margin:2rem 0}.about-links a{margin:0 .4rem;font-size:.9rem}
   .about-copy{margin:0;padding-left:1rem}.about-copy h2{margin-left:0;font-size:1.5rem}
-  .director{min-height:0}.director .portrait{position:relative;left:auto;top:auto;width:60%;margin:0 auto}
+  .director{min-height:0;display:block}.director .portrait{position:relative;left:auto;top:auto;width:60%;margin:0 auto}
   .director .statue,.director .clock{display:none}
-  .director-copy{text-align:left}.director-copy h2{justify-content:flex-start}
+  .director-copy{text-align:left}.director-copy h2{justify-content:flex-start;font-size:2.2rem}
   .purpose-grid{grid-template-columns:1fr;padding-left:0}.values ul{grid-template-columns:1fr}
   .nations{padding-left:0;padding-right:0}
   .nation-grid{padding:.8rem 1.4rem 1rem;scroll-padding:0 1.4rem}

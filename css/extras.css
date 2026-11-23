@@ -11,8 +11,8 @@
 /* ---------- brand lockup: SEVEN WINDS over Travel & Tours ---------- */
 .brand{line-height:1.05}
 .brand .brand-text{display:flex;flex-direction:column}
-.brand .brand-name{font-size:1.65rem;letter-spacing:.06em}
-.brand .brand-sub{font-family:'Plus Jakarta Sans',sans-serif;font-size:.62rem;letter-spacing:.38em;color:var(--pink);margin-top:.15rem}
+.brand .brand-name{font-size:calc(var(--u)*1.65);letter-spacing:.06em}
+.brand .brand-sub{font-family:'Plus Jakarta Sans',sans-serif;font-size:calc(var(--u)*.62);letter-spacing:.38em;color:var(--pink);margin-top:calc(var(--u)*.15)}
 .brand .brand-tag{font-family:'Plus Jakarta Sans',sans-serif;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:#cfcdf0;opacity:.8;margin-top:.2rem}
 .site-header .brand .brand-tag{display:none}
 .foot-brand .brand-tag{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.5rem;letter-spacing:.22em;color:#a9a7cf;margin-top:.2rem}
@@ -142,15 +142,18 @@ body:has(#contact:target) .nav>a[href="#contact"]::after{opacity:1}
 }
 
 /* ---------- inquiry forms, package filters, and booking estimate ---------- */
-.package-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem 1rem;max-width:66rem;margin:0 auto 1rem;padding:1.2rem;background:rgba(255,255,255,.55);border:1px solid rgba(74,111,192,.35);color:#2a3b70;text-align:left;font-family:'Plus Jakarta Sans',sans-serif}
-.package-filters label{display:grid;gap:.3rem;font-size:.85rem;font-weight:600}
+.package-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.2rem;max-width:66rem;margin:0 auto 1rem;padding:1.4rem 1.6rem;background:linear-gradient(135deg,#202050,#3a3a98);border:1px solid rgba(255,255,255,.25);border-top:.25rem solid var(--gold);border-radius:.8rem;box-shadow:0 .6rem 1.4rem rgba(32,32,80,.35);color:#fff;text-align:left;font-family:'Plus Jakarta Sans',sans-serif}
+.package-filters label{display:grid;gap:.4rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
 .package-filters input,.inquiry-form input,.inquiry-form select,.inquiry-form textarea{width:100%;min-width:0;padding:.65rem .75rem;border:1px solid rgba(207,205,240,.65);border-radius:.2rem;background:#f5f2fb;color:#202050;font:inherit}
-.package-filters input{font-size:.85rem}
+.package-filters input{font-size:.95rem;border-radius:.5rem}
+.package-filters input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 .2rem rgba(228,180,90,.45)}
 .package-filters .filter-search{grid-column:span 2}
 .package-filters button{align-self:end;justify-self:start;border:0;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
 .nation[hidden]{display:none}
-.filter-empty{margin:.8rem auto 1rem;color:#3b4773;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;text-align:center}
-.filter-no-results{max-width:66rem;margin:1rem auto 1.5rem;padding:1.2rem 1.5rem;border:1px solid rgba(74,111,192,.35);border-radius:.35rem;background:rgba(255,255,255,.6);color:#2a3b70;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;line-height:1.5;text-align:center}
+.filter-empty{display:flex;align-items:center;gap:.8rem;width:fit-content;max-width:92%;margin:1rem auto 1.2rem;padding:.55rem 1.7rem .55rem .6rem;border-radius:3rem;background:linear-gradient(90deg,#202050,#3a3a98);border:1px solid rgba(255,255,255,.35);box-shadow:0 .4rem 1rem rgba(32,32,80,.35),0 0 0 .2rem rgba(228,180,90,.6);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.02em;text-align:left}
+.filter-empty::before{content:"";flex:none;width:2.3rem;height:2.3rem;border-radius:50%;background:#f5f2fb url(../assets/icons/star-blue.png) center/62% no-repeat;box-shadow:0 0 0 .15rem var(--gold)}
+.filter-empty[hidden]{display:none}
+.filter-no-results{max-width:40rem;margin:1rem auto 1.5rem;padding:1.3rem 1.6rem;border:1px solid rgba(74,111,192,.45);border-left:.4rem solid var(--gold);border-radius:.6rem;background:linear-gradient(135deg,#fff,#eef0fa);box-shadow:0 .5rem 1.2rem rgba(32,32,80,.18);color:#202050;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:700;line-height:1.5;text-align:center}
 .filter-no-results[hidden]{display:none}
 .inquiry-form{max-width:48rem;margin:0 auto 2rem;padding:1.4rem 1.6rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);border-radius:.35rem;color:#f4f1ff;text-align:left;font-family:'Plus Jakarta Sans',sans-serif}
 .cta-band .inquiry-form{margin-bottom:1rem}
@@ -163,7 +166,7 @@ body:has(#contact:target) .nav>a[href="#contact"]::after{opacity:1}
 .phone-input-group input{flex:1;width:auto;border-radius:0 .2rem .2rem 0}
 .inquiry-form input,.inquiry-form select,.inquiry-form textarea{font-size:.9rem}
 .inquiry-form textarea{resize:vertical;min-height:6rem}
-.filter-error{display:block;color:#8f1c30;font-size:.82rem;font-weight:600;line-height:1.35}
+.filter-error{display:block;color:#ffc4ce;font-size:.82rem;font-weight:600;line-height:1.35}
 .filter-error[hidden]{display:none}
 .field-error{display:block;margin-top:.25rem;color:#ffc4ce;font-size:.85rem;line-height:1.4}
 .field-error[hidden]{display:none}

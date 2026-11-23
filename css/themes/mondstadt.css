@@ -43,11 +43,6 @@ body.stops{
 .mondstadt .st-orn::after{background:linear-gradient(270deg,transparent,currentColor)}
 .mondstadt .st-orn i{flex:none;width:1.7rem;height:1.7rem;background:var(--anemo) center/contain no-repeat}
 
-/* ---------- header (markup from styles.css, recoloured for this page only) ---------- */
-body.stops.mondstadt .site-header{background:linear-gradient(90deg,var(--m-navy),#456da8);border-top-color:rgba(251,238,219,.35);border-bottom:2px solid var(--m-gold)}
-body.stops.mondstadt .nav .menu{background:linear-gradient(#1d315c,#456da8);border-color:rgba(217,169,74,.6)}
-body.stops.mondstadt .nav>a:hover,body.stops.mondstadt .nav .has-menu>a:hover{color:var(--m-apricot)}
-
 /* ---------- extra icons / edges used below ---------- */
 body.stops.mondstadt{
   --ic-cal:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d9a94a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
