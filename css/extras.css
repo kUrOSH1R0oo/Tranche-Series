@@ -155,6 +155,8 @@ body:has(#contact:target) .nav>a[href="#contact"]::after{opacity:1}
 .filter-empty[hidden]{display:none}
 .filter-no-results{max-width:40rem;margin:1rem auto 1.5rem;padding:1.3rem 1.6rem;border:1px solid rgba(74,111,192,.45);border-left:.4rem solid var(--gold);border-radius:.6rem;background:linear-gradient(135deg,#fff,#eef0fa);box-shadow:0 .5rem 1.2rem rgba(32,32,80,.18);color:#202050;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:700;line-height:1.5;text-align:center}
 .filter-no-results[hidden]{display:none}
+/* No-results card lives inside the (fixed-height) grid, pinned to its top so it sits right under the filters and nothing jumps */
+.nation-grid>.filter-no-results{align-self:flex-start;margin:1rem auto 0}
 .inquiry-form{max-width:48rem;margin:0 auto 2rem;padding:1.4rem 1.6rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);border-radius:.35rem;color:#f4f1ff;text-align:left;font-family:'Plus Jakarta Sans',sans-serif}
 .cta-band .inquiry-form{margin-bottom:1rem}
 .cta-band .inquiry-form+.cta-actions{margin-top:0;margin-bottom:2rem}
@@ -198,3 +200,5 @@ body:has(#contact:target) .nav>a[href="#contact"]::after{opacity:1}
   .inquiry-grid>label{padding-top:.45rem}
   .booking-panel{padding:1.4rem 1rem}
 }
+/* Visually hidden but still announced by screen readers (filter zero-result status) */
+.sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}

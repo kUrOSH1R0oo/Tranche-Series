@@ -102,6 +102,7 @@ function filterPackages(form, fields) {
   if (!validatePackageFilters(form, fields)) {
     if (status) {
       status.hidden = false;
+      status.classList.remove("sr-only");
       status.textContent = "Fix the highlighted filter values to see results.";
     }
     return;
@@ -137,9 +138,14 @@ function filterPackages(form, fields) {
   });
 
   if (status) {
-    status.hidden = visibleCount === 0;
+    // Keep the live region rendered (never hidden/emptied) so screen readers
+    // announce the zero-result message too. When nothing matches, the visible
+    // "no results" box already shows the message, so the pill is only
+    // visually hidden instead of removed from the accessibility tree.
+    status.hidden = false;
+    status.classList.toggle("sr-only", visibleCount === 0);
     status.textContent = visibleCount === 0
-      ? ""
+      ? "No packages found. No tours match your current filters. Try changing or clearing them."
       : visibleCount + (visibleCount === 1 ? " package found." : " packages found.");
   }
   if (emptyState) {
