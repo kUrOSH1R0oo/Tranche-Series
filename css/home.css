@@ -107,7 +107,7 @@
 .why-kicker{font-size:1.1rem;font-weight:500;margin-left:3rem;color:#3c4f88}
 .why h2{font-size:1.9rem;text-transform:uppercase;color:#243a7e}
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.4rem;text-align:center}
-.why-grid img{width:4.4rem;height:auto;margin:0 auto 1rem}
+.why-grid img{width:4.4rem;height:6.1rem;object-fit:contain;margin:0 auto 1rem;display:block}
 .why-grid h3{font-size:1.3rem;font-weight:600;color:#26397a}
 .why-grid p{font-size:1.05rem;color:#33488a;max-width:14rem;margin:.4rem auto 0}
 
