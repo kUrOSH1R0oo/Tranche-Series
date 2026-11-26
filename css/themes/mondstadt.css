@@ -1,8 +1,3 @@
-/* Mondstadt — windswept blues on warm apricot
-   File: css/themes/mondstadt.css  (uses css/styles.css tokens: --nav-h and the responsive html font-size)
-   All page rules are scoped under body.stops.mondstadt so they beat nation-stops.css / extras.css
-   without !important and never touch other nations. */
-
 body.stops{
   --st-page:#f0c08e;--st-display:'DM Serif Display',Georgia,serif;--st-body:'Alegreya',Georgia,serif;
   --st-hero-overlay:linear-gradient(rgba(38,70,138,.58),rgba(38,70,138,.5));
