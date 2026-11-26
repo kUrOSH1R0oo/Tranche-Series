@@ -1,9 +1,3 @@
-/* Inazuma — lantern gold on contract red
-   File: css/themes/inazuma.css  (uses css/styles.css tokens)
-   Layout follows the finalized Mondstadt page; palette, type and imagery stay Inazuma's.
-   All page rules are scoped under body.stops.inazuma so they beat nation-stops.css / extras.css
-   without !important and never touch other nations. */
-
 body.stops{
   --st-page:#202050;--st-display:'Playfair Display',Georgia,serif;--st-body:'Newsreader',Georgia,serif;
   --st-hero-overlay:linear-gradient(90deg,rgba(32,26,84,.82) 0%,rgba(48,32,110,.5) 45%,rgba(48,32,110,.15) 100%);
